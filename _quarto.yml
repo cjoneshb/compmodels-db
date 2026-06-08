@@ -1,0 +1,42 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "CompModels · Health Behavior"
+  description: "Evidence synthesis database for computational modeling approaches in health psychology"
+  favicon: ""
+  open-graph:
+    title: "Computational Models in Health Behavior — Evidence Synthesis Database"
+    description: "A curated registry of computational modeling approaches in health psychology, with a focus on theory-derived architecture selection."
+  navbar:
+    title: "CompModels DB"
+    left:
+      - href: index.qmd
+        text: About
+      - href: database.qmd
+        text: Database
+      - href: submit.qmd
+        text: Submit a Study
+    right:
+      - icon: github
+        href: https://github.com/
+        aria-label: GitHub
+  page-footer:
+    left: >
+      Maintained by
+      [Christopher M. Jones](mailto:christopher.jones@medma.uni-heidelberg.com),
+      Heidelberg University · CPD Medical Faculty Mannheim
+    right: "Built with [Quarto](https://quarto.org)"
+
+execute:
+  freeze: false
+
+format:
+  html:
+    theme:
+      - flatly
+      - styles.css
+    toc: false
+    link-external-newpage: true
+    smooth-scroll: true

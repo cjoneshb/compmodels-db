@@ -1,0 +1,298 @@
+---
+title: "Database"
+---
+
+```{ojs}
+//| echo: false
+
+// ── Configuration ─────────────────────────────────────────
+// After publishing the Verified sheet as CSV (see SETUP.md),
+// replace the placeholder below with your published CSV URL.
+// Format: https://docs.google.com/spreadsheets/d/SHEET_ID/pub?output=csv&gid=GID
+SHEET_CSV_URL = "YOUR_GOOGLE_SHEETS_CSV_URL_HERE"
+
+// ── Data: live sheet with local fallback ──────────────────
+data = {
+  if (SHEET_CSV_URL && SHEET_CSV_URL !== "YOUR_GOOGLE_SHEETS_CSV_URL_HERE") {
+    try {
+      const resp = await fetch(SHEET_CSV_URL)
+      const text = await resp.text()
+      return d3.csvParse(text, d3.autoType)
+    } catch (e) {
+      console.warn("Live sheet unreachable, using local fallback:", e)
+    }
+  }
+  return FileAttachment("data/models.csv").csv({ typed: true })
+}
+
+// Live sheet already contains only verified entries;
+// local CSV needs filtering
+verified = SHEET_CSV_URL !== "YOUR_GOOGLE_SHEETS_CSV_URL_HERE"
+  ? data
+  : data.filter(d => d.status === "verified")
+```
+
+```{ojs}
+//| echo: false
+
+// ── Summary stats ─────────────────────────────────────────
+n          = verified.length
+n_derived  = verified.filter(d => d.mechanism_derived === "Yes").length
+n_cross    = verified.filter(d => d.cross_arch_validation === "Yes").length
+n_jitai    = verified.filter(d => d.jitai_derived === "Yes").length
+
+pct = (n, total) => total > 0 ? Math.round(n / total * 100) : 0
+
+html`<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-number">${n}</div>
+    <div class="stat-label">Studies indexed</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">${n_derived}</div>
+    <div class="stat-label">Mechanism-derived architecture</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">${n_cross}</div>
+    <div class="stat-label">Cross-arch. validation</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">${n_jitai}</div>
+    <div class="stat-label">JITAI derived</div>
+  </div>
+</div>`
+```
+
+---
+
+### Filter
+
+```{ojs}
+//| echo: false
+
+theory_opts = ["All theory groups", ...new Set(verified.map(d => d.theory_group))].sort()
+arch_opts   = ["All architectures",  ...new Set(verified.map(d => d.architecture))].sort()
+deriv_opts  = ["All", "Yes", "Partial", "No"]
+
+viewof theory_filter = Inputs.select(theory_opts, { label: "Theory group" })
+viewof arch_filter   = Inputs.select(arch_opts,   { label: "Architecture" })
+viewof deriv_filter  = Inputs.select(deriv_opts,  { label: "Mechanism-derived?" })
+viewof search_text   = Inputs.search(verified, {
+  placeholder: "Search authors, behaviors, theories…",
+  label: "Search"
+})
+```
+
+```{ojs}
+//| echo: false
+
+filtered = {
+  let result = search_text
+  if (theory_filter !== "All theory groups")
+    result = result.filter(d => d.theory_group === theory_filter)
+  if (arch_filter !== "All architectures")
+    result = result.filter(d => d.architecture === arch_filter)
+  if (deriv_filter !== "All")
+    result = result.filter(d => d.mechanism_derived === deriv_filter)
+  return result
+}
+```
+
+```{ojs}
+//| echo: false
+
+function badge(val) {
+  if (val === "Yes")     return "✓ Yes"
+  if (val === "Partial") return "◑ Partial"
+  if (val === "No")      return "✗ No"
+  return val || "—"
+}
+
+Inputs.table(filtered, {
+  columns: [
+    "author", "year", "behavior",
+    "theory_group", "architecture",
+    "mechanism_derived", "cross_arch_validation", "jitai_derived"
+  ],
+  header: {
+    author:                "Author(s)",
+    year:                  "Year",
+    behavior:              "Behavior",
+    theory_group:          "Theory group",
+    architecture:          "Architecture",
+    mechanism_derived:     "Mechanism-derived?",
+    cross_arch_validation: "Cross-arch. valid.?",
+    jitai_derived:         "JITAI derived?"
+  },
+  format: {
+    author: d => d,
+    year:   d => d,
+    mechanism_derived:     d => badge(d),
+    cross_arch_validation: d => badge(d),
+    jitai_derived:         d => badge(d)
+  },
+  width: {
+    author:                160,
+    year:                   50,
+    behavior:              130,
+    theory_group:          180,
+    architecture:          200,
+    mechanism_derived:     110,
+    cross_arch_validation: 110,
+    jitai_derived:          90
+  },
+  rows: 20
+})
+```
+
+*Click any row to expand details below.*
+
+```{ojs}
+//| echo: false
+
+viewof selected = Inputs.table(filtered, {
+  columns: ["author", "year", "behavior", "theory_group", "architecture",
+            "mechanism_derived", "cross_arch_validation", "jitai_derived"],
+  value: null,
+  multiple: false
+})
+```
+
+```{ojs}
+//| echo: false
+
+{
+  if (!selected || selected.length === 0) return md``
+  const d = Array.isArray(selected) ? selected[0] : selected
+
+  const row = (label, val) =>
+    val ? `<tr><th style="width:200px;text-align:left;font-weight:600;padding:4px 8px">${label}</th><td style="padding:4px 8px">${val}</td></tr>` : ""
+
+  return html`
+    <details open style="background:#f8f9fa;border:1px solid #dee2e6;border-radius:6px;padding:1rem;margin-top:1rem">
+      <summary style="font-weight:700;cursor:pointer;font-size:1.05rem">
+        ${d.author} (${d.year}) — ${d.behavior}
+      </summary>
+      <table style="margin-top:0.75rem;border-collapse:collapse;width:100%;font-size:0.88rem">
+        ${row("DOI / URL",              d.doi_url ? `<a href="${d.doi_url}" target="_blank">${d.doi_url}</a>` : "—")}
+        ${row("Behavior category",      d.behavior_category)}
+        ${row("Theory (full name)",     d.theory_name)}
+        ${row("Theory group",           d.theory_group)}
+        ${row("Architecture",           d.architecture)}
+        ${row("Mechanism-derived?",     badge(d.mechanism_derived))}
+        ${row("Rationale",              d.mechanism_rationale)}
+        ${row("Cross-arch. validation?",badge(d.cross_arch_validation))}
+        ${row("Validation method",      d.cross_arch_method)}
+        ${row("ΔELPD",                  d.delta_elpd ? String(d.delta_elpd) : null)}
+        ${row("JITAI derived?",         badge(d.jitai_derived))}
+        ${row("JITAI — who?",           d.jitai_who)}
+        ${row("JITAI — when?",          d.jitai_when)}
+        ${row("Study design",           d.study_design)}
+        ${row("N participants",         d.n_participants ? String(d.n_participants) : null)}
+        ${row("Study duration (days)",  d.study_duration_days ? String(d.study_duration_days) : null)}
+        ${row("EMA prompts/day",        d.ema_assessments_per_day ? String(d.ema_assessments_per_day) : null)}
+        ${row("Outcome type",           d.outcome_type)}
+        ${row("Notes",                  d.notes)}
+      </table>
+    </details>`
+}
+```
+
+---
+
+### Overview charts
+
+```{ojs}
+//| echo: false
+
+arch_counts = {
+  const counts = d3.rollups(
+    verified, v => v.length, d => d.architecture
+  ).map(([architecture, count]) => ({ architecture, count }))
+  return counts.sort((a, b) => b.count - a.count)
+}
+
+theory_counts = {
+  const counts = d3.rollups(
+    verified, v => v.length, d => d.theory_group
+  ).map(([theory_group, count]) => ({ theory_group, count }))
+  return counts.sort((a, b) => b.count - a.count)
+}
+```
+
+::: {layout-ncol=2}
+
+```{ojs}
+//| echo: false
+
+Plot.plot({
+  title: "Architecture distribution",
+  marks: [
+    Plot.barX(arch_counts, {
+      x: "count", y: "architecture",
+      sort: { y: "-x" },
+      fill: "#3498db",
+      tip: true
+    }),
+    Plot.ruleX([0])
+  ],
+  marginLeft: 220,
+  x: { label: "Studies", tickFormat: d => Number.isInteger(d) ? d : "" },
+  y: { label: null }
+})
+```
+
+```{ojs}
+//| echo: false
+
+Plot.plot({
+  title: "Theory group distribution",
+  marks: [
+    Plot.barX(theory_counts, {
+      x: "count", y: "theory_group",
+      sort: { y: "-x" },
+      fill: "#2c3e50",
+      tip: true
+    }),
+    Plot.ruleX([0])
+  ],
+  marginLeft: 220,
+  x: { label: "Studies", tickFormat: d => Number.isInteger(d) ? d : "" },
+  y: { label: null }
+})
+```
+
+:::
+
+```{ojs}
+//| echo: false
+
+deriv_counts = {
+  const vals = ["Yes", "Partial", "No"]
+  const colors = { Yes: "#1a7a4a", Partial: "#b8600a", No: "#b02020" }
+  return vals.map(v => ({
+    label: v,
+    count: verified.filter(d => d.mechanism_derived === v).length,
+    fill: colors[v]
+  }))
+}
+
+Plot.plot({
+  title: "Mechanism-derived architecture (all studies)",
+  marks: [
+    Plot.barX(deriv_counts, {
+      x: "count", y: "label",
+      fill: "fill",
+      tip: true
+    }),
+    Plot.ruleX([0])
+  ],
+  marginLeft: 80,
+  x: { label: "Studies", tickFormat: d => Number.isInteger(d) ? d : "" },
+  y: { label: null }
+})
+```
+
+---
+
+*Database last updated: 2026-06-08 · [Submit a new study](submit.qmd)*

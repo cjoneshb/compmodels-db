@@ -1,0 +1,361 @@
+---
+title: "Submit a Study"
+---
+
+Use this form to propose a new entry for the database. **Mandatory fields are marked with \*.** Submissions are held for review before appearing in the verified database — you will receive a confirmation once your entry is processed.
+
+::: {.callout-note-custom}
+**Data quality note:** For the *Mechanism-derived?* field, please code conservatively. "Yes" means the authors explicitly argued that the architecture formalizes the dominant mechanism as specified by the theory. "Partial" means some justification was given but mechanism dominance was not formally derived. "No" means the architecture was chosen by convention, software, or without theoretical rationale.
+:::
+
+---
+
+<form id="submission-form" onsubmit="handleSubmit(event)" novalidate>
+
+<div class="form-section">
+<h3>Study identification</h3>
+
+<div class="form-row">
+  <div class="form-group">
+    <label for="author">Author(s) <span class="req">*</span></label>
+    <input type="text" id="author" name="author" placeholder="e.g. Smith et al. or Jones & Müller" required>
+  </div>
+  <div class="form-group">
+    <label for="year">Year <span class="req">*</span></label>
+    <input type="number" id="year" name="year" min="2000" max="2035" placeholder="2024" required>
+  </div>
+</div>
+
+<div class="form-row full">
+  <div class="form-group">
+    <label for="doi_url">DOI or URL <span class="req">*</span></label>
+    <input type="text" id="doi_url" name="doi_url" placeholder="https://doi.org/10.XXXX/..." required>
+  </div>
+</div>
+
+</div>
+
+<div class="form-section">
+<h3>Behavior &amp; theory</h3>
+
+<div class="form-row">
+  <div class="form-group">
+    <label for="behavior">Behavior studied <span class="req">*</span></label>
+    <input type="text" id="behavior" name="behavior"
+      placeholder="e.g. Smoking cessation, Physical activity, Snacking" required>
+  </div>
+  <div class="form-group">
+    <label for="behavior_category">Behavior category</label>
+    <select id="behavior_category" name="behavior_category">
+      <option value="">— Select —</option>
+      <option>Substance use</option>
+      <option>Dietary behavior</option>
+      <option>Physical activity</option>
+      <option>Medication adherence</option>
+      <option>Sleep</option>
+      <option>Sexual risk behavior</option>
+      <option>Stress / affect regulation</option>
+      <option>Other</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group">
+    <label for="theory_name">Theory (full name) <span class="req">*</span></label>
+    <input type="text" id="theory_name" name="theory_name"
+      placeholder="e.g. Temporal Self-Regulation Theory" required>
+  </div>
+  <div class="form-group">
+    <label for="theory_group">Theory group <span class="req">*</span></label>
+    <select id="theory_group" name="theory_group" required>
+      <option value="">— Select —</option>
+      <option>Expectancy-value / Social cognitive</option>
+      <option>Self-regulation / Cybernetic</option>
+      <option>Dual-process / Habit</option>
+      <option>Stage / Volitional</option>
+      <option>Self-determination / Needs-based</option>
+      <option>Addiction / Incentive</option>
+      <option>Multiple / Other</option>
+    </select>
+  </div>
+</div>
+
+</div>
+
+<div class="form-section">
+<h3>Computational architecture</h3>
+
+<div class="form-row">
+  <div class="form-group">
+    <label for="architecture">Architecture selected <span class="req">*</span></label>
+    <select id="architecture" name="architecture" required>
+      <option value="">— Select —</option>
+      <option>Cybernetic difference equation</option>
+      <option>Dual-process logistic</option>
+      <option>Reinforcement learning (RL)</option>
+      <option>Hidden Markov Model (HMM)</option>
+      <option>Agent-based model</option>
+      <option>Network / dynamical systems model</option>
+      <option>Structural equation model (SEM)</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="mechanism_derived">Was architecture theory-derived?</label>
+    <select id="mechanism_derived" name="mechanism_derived">
+      <option value="">— Select —</option>
+      <option>Yes</option>
+      <option>Partial</option>
+      <option>No</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-row full">
+  <div class="form-group">
+    <label for="mechanism_rationale">Rationale for coding (brief)</label>
+    <textarea id="mechanism_rationale" name="mechanism_rationale"
+      placeholder="Why Yes / Partial / No? Cite specific text if possible."></textarea>
+  </div>
+</div>
+
+</div>
+
+<div class="form-section">
+<h3>Cross-architecture validation</h3>
+
+<div class="form-row">
+  <div class="form-group">
+    <label for="cross_arch_validation">Cross-architecture comparison performed?</label>
+    <select id="cross_arch_validation" name="cross_arch_validation">
+      <option value="">— Select —</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="cross_arch_method">Method used (if yes)</label>
+    <select id="cross_arch_method" name="cross_arch_method">
+      <option value="">— Select —</option>
+      <option>LOO-CV (ELPD)</option>
+      <option>Bayes Factor</option>
+      <option>AIC / BIC</option>
+      <option>Cross-validated RMSE</option>
+      <option>Other</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group">
+    <label for="delta_elpd">ΔELPD (selected vs. alternative)</label>
+    <input type="number" id="delta_elpd" name="delta_elpd" step="any"
+      placeholder="e.g. −10.8 (negative = selected better)">
+    <span class="form-note">Leave blank if not applicable or not reported</span>
+  </div>
+</div>
+
+</div>
+
+<div class="form-section">
+<h3>JITAI derivation</h3>
+
+<div class="form-row">
+  <div class="form-group">
+    <label for="jitai_derived">JITAI predictions derived from the model?</label>
+    <select id="jitai_derived" name="jitai_derived">
+      <option value="">— Select —</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group">
+    <label for="jitai_who">JITAI — <em>who?</em> (targeting dimension)</label>
+    <input type="text" id="jitai_who" name="jitai_who"
+      placeholder="e.g. Person-level mechanism score, CPD profile">
+  </div>
+  <div class="form-group">
+    <label for="jitai_when">JITAI — <em>when?</em> (timing dimension)</label>
+    <input type="text" id="jitai_when" name="jitai_when"
+      placeholder="e.g. High-cue + high-urge windows, Failure windows">
+  </div>
+</div>
+
+</div>
+
+<div class="form-section">
+<h3>Study characteristics</h3>
+
+<div class="form-row">
+  <div class="form-group">
+    <label for="study_design">Study design</label>
+    <select id="study_design" name="study_design">
+      <option value="">— Select —</option>
+      <option>EMA (ecological momentary assessment)</option>
+      <option>ESM (experience sampling method)</option>
+      <option>Ambulatory assessment</option>
+      <option>Lab experiment</option>
+      <option>RCT</option>
+      <option>Cross-sectional survey</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="outcome_type">Outcome type</label>
+    <select id="outcome_type" name="outcome_type">
+      <option value="">— Select —</option>
+      <option>Binary behavior (event)</option>
+      <option>Continuous behavior</option>
+      <option>Count / frequency</option>
+      <option>Affect / appraisal</option>
+      <option>Multiple outcomes</option>
+      <option>Other</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group">
+    <label for="n_participants">N participants</label>
+    <input type="number" id="n_participants" name="n_participants" min="1" placeholder="e.g. 91">
+  </div>
+  <div class="form-group">
+    <label for="study_duration_days">Study duration (days)</label>
+    <input type="number" id="study_duration_days" name="study_duration_days" min="1" placeholder="e.g. 14">
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group">
+    <label for="ema_assessments_per_day">EMA prompts / day</label>
+    <input type="number" id="ema_assessments_per_day" name="ema_assessments_per_day" min="1" step="any" placeholder="e.g. 5">
+  </div>
+</div>
+
+<div class="form-row full">
+  <div class="form-group">
+    <label for="notes">Additional notes</label>
+    <textarea id="notes" name="notes"
+      placeholder="Anything important not captured above (key findings, data availability, notable limitations, etc.)"></textarea>
+  </div>
+</div>
+
+</div>
+
+<div class="form-section">
+<h3>Your contact (optional)</h3>
+
+<div class="form-row">
+  <div class="form-group">
+    <label for="submitter_email">Email address</label>
+    <input type="email" id="submitter_email" name="submitter_email"
+      placeholder="For confirmation and follow-up queries">
+    <span class="form-note">Not published. Used only for review correspondence.</span>
+  </div>
+</div>
+
+</div>
+
+<div id="msg-success" class="msg-success">
+  ✓ <strong>Submission received.</strong> Thank you — your entry will be reviewed and added to the database within a few days. You will receive a confirmation if you provided an email address.
+</div>
+<div id="msg-error" class="msg-error">
+  ✗ <strong>Submission failed.</strong> Please try again, or email the data directly to
+  <a href="mailto:christopher.jones@medma.uni-heidelberg.com">christopher.jones@medma.uni-heidelberg.com</a>.
+</div>
+
+<br>
+<button type="submit" class="btn-submit" id="btn-submit">Submit for review</button>
+
+</form>
+
+<script>
+// ── Configuration ─────────────────────────────────────────────────────────────
+// Replace with your deployed Google Apps Script Web App URL:
+const SUBMIT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+
+// Maintainer fallback email:
+const MAINTAINER_EMAIL = "christopher.jones@medma.uni-heidelberg.com";
+
+// ── Form handling ─────────────────────────────────────────────────────────────
+function collectFormData() {
+  const ids = [
+    "author", "year", "doi_url", "behavior", "behavior_category",
+    "theory_name", "theory_group", "architecture",
+    "mechanism_derived", "mechanism_rationale",
+    "cross_arch_validation", "cross_arch_method", "delta_elpd",
+    "jitai_derived", "jitai_who", "jitai_when",
+    "study_design", "n_participants", "study_duration_days",
+    "ema_assessments_per_day", "outcome_type", "notes",
+    "submitter_email"
+  ];
+  const data = {};
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    data[id] = el ? el.value.trim() : "";
+  });
+  return data;
+}
+
+function showMsg(id, show) {
+  document.getElementById(id).style.display = show ? "block" : "none";
+}
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById("submission-form");
+
+  // Basic HTML5 validation
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  const btn = document.getElementById("btn-submit");
+  btn.disabled = true;
+  btn.textContent = "Sending…";
+
+  const payload = collectFormData();
+
+  // If no endpoint configured, fall back to mailto
+  if (!SUBMIT_URL || SUBMIT_URL === "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
+    const subject = encodeURIComponent(
+      "[CompModels DB] Submission: " + payload.author + " (" + payload.year + ")"
+    );
+    const body = encodeURIComponent(
+      "New database submission:\n\n" +
+      Object.entries(payload)
+        .filter(([, v]) => v !== "")
+        .map(([k, v]) => k + ": " + v)
+        .join("\n")
+    );
+    window.location.href =
+      "mailto:" + MAINTAINER_EMAIL + "?subject=" + subject + "&body=" + body;
+    showMsg("msg-success", true);
+    btn.textContent = "Submitted";
+    return;
+  }
+
+  // POST to Google Apps Script endpoint
+  try {
+    await fetch(SUBMIT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    showMsg("msg-success", true);
+    showMsg("msg-error", false);
+    form.reset();
+    btn.textContent = "Submitted ✓";
+  } catch (err) {
+    showMsg("msg-error", true);
+    btn.disabled = false;
+    btn.textContent = "Submit for review";
+  }
+}
+</script>

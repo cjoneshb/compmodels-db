@@ -1,0 +1,54 @@
+---
+title: ""
+---
+
+::: {.hero}
+## Computational Models in Health Behavior
+
+A curated, open evidence synthesis database for formal computational modeling approaches in health psychology — with a focus on **theory-derived architecture selection** and **just-in-time adaptive interventions**.
+:::
+
+### What is this database?
+
+Health behavior research is increasingly using formal computational models — cybernetic control equations, dual-process logistic models, reinforcement learning frameworks, hidden Markov models — to represent behavioral mechanisms. Yet which architecture to use for which behavior is rarely derived from theory in a principled way.
+
+This database tracks published computational models of momentary health behavior and codes them on **three questions** the field currently cannot answer systematically:
+
+1. **Was the architecture theory-derived?** (or chosen by convention/software availability)
+2. **Was a cross-architecture comparison conducted?** (a missing standard in current practice)
+3. **Were JITAI predictions derived from the fitted model?** (the application layer)
+
+### How entries are structured
+
+Each entry captures one study × behavior combination. The coding scheme maps onto the theory-architecture framework introduced in:
+
+> Jones, C. M. (2025). *A principled framework for selecting and formalizing computational models of momentary behavior: Two illustrative demonstrations grounded in self-regulation theory.* Perspectives on Psychological Science.
+
+Key columns are:
+
+| Column | What it captures |
+|---|---|
+| Theory group | Which major theory group the authors invoke |
+| Architecture | Formal model type selected |
+| Mechanism-derived? | Was selection principled from theory (Yes / Partial / No) |
+| Cross-arch. validation? | Was a competing architecture tested? |
+| ΔELPD | LOO-CV advantage of selected model (if reported) |
+| JITAI derived? | Were intervention timing/targeting predictions made? |
+
+### How to contribute
+
+Use the [Submit a Study](submit.qmd) page to propose an entry. Submissions are reviewed before appearing in the verified database. You can also open a GitHub issue or pull request on the [repository](https://github.com/).
+
+### How to cite
+
+If you use data from this database, please cite both the database and the framework paper:
+
+> Jones, C. M. (2026). *Computational Models in Health Behavior — Evidence Synthesis Database* [Data set]. https://[url]
+
+> Jones, C. M. (2025). *A principled framework for selecting and formalizing computational models of momentary behavior.* Perspectives on Psychological Science.
+
+---
+
+::: {.callout-note}
+This database is in active development. Entries marked **verified** have been checked against the primary source. Entries marked **pending** are awaiting review.
+:::

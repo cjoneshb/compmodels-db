@@ -1,0 +1,163 @@
+/*-- scss:rules --*/
+
+/* ── Typography ──────────────────────────────────────────── */
+body {
+  font-size: 15px;
+}
+
+h1 { font-size: 1.8rem; }
+h2 { font-size: 1.35rem; margin-top: 2rem; }
+
+/* ── Navbar ──────────────────────────────────────────────── */
+.navbar {
+  border-bottom: 2px solid #2c3e50;
+}
+
+/* ── Hero / landing ──────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+  color: white;
+  padding: 3.5rem 2rem;
+  margin-bottom: 2.5rem;
+  border-radius: 8px;
+}
+.hero h1 { color: white; font-size: 2rem; margin-bottom: 0.5rem; }
+.hero p  { color: rgba(255,255,255,0.88); font-size: 1.05rem; margin-bottom: 0; }
+
+/* ── Summary stat cards ──────────────────────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.stat-card {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-left: 4px solid #3498db;
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  text-align: center;
+}
+.stat-card .stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  line-height: 1.1;
+}
+.stat-card .stat-label {
+  font-size: 0.78rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.25rem;
+}
+
+/* ── Badge-style indicators ──────────────────────────────── */
+.badge-yes     { color: #1a7a4a; font-weight: 600; }
+.badge-partial { color: #b8600a; font-weight: 600; }
+.badge-no      { color: #b02020; font-weight: 600; }
+
+/* ── Filter panel ────────────────────────────────────────── */
+.filter-panel {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 1.2rem 1.4rem 0.8rem;
+  margin-bottom: 1.5rem;
+}
+.filter-panel label { font-weight: 600; font-size: 0.85rem; }
+
+/* ── Submit form ─────────────────────────────────────────── */
+.form-section {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.form-section h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+.form-row.full { grid-template-columns: 1fr; }
+.form-group { display: flex; flex-direction: column; gap: 0.3rem; }
+.form-group label { font-size: 0.85rem; font-weight: 600; color: #495057; }
+.form-group label .req { color: #dc3545; margin-left: 2px; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.45rem 0.65rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: white;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
+}
+.form-group textarea { resize: vertical; min-height: 80px; }
+.form-note { font-size: 0.78rem; color: #6c757d; }
+
+.btn-submit {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-submit:hover { background: #3498db; }
+.btn-submit:disabled { background: #adb5bd; cursor: not-allowed; }
+
+.msg-success {
+  background: #d1f7e8;
+  border: 1px solid #1a7a4a;
+  color: #0f4d2c;
+  padding: 1rem 1.2rem;
+  border-radius: 5px;
+  display: none;
+}
+.msg-error {
+  background: #fde8e8;
+  border: 1px solid #b02020;
+  color: #6b0f0f;
+  padding: 1rem 1.2rem;
+  border-radius: 5px;
+  display: none;
+}
+
+/* ── Info callout ────────────────────────────────────────── */
+.callout-note-custom {
+  border-left: 4px solid #3498db;
+  background: #eaf4fb;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0 5px 5px 0;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .form-row { grid-template-columns: 1fr; }
+  .hero { padding: 2rem 1rem; }
+}
