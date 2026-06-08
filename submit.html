@@ -154,251 +154,264 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <hr>
 <form id="submission-form" onsubmit="handleSubmit(event)" novalidate="">
+
 <div class="form-section">
-<h3 class="anchored">
-Study identification
-</h3>
+<h3 class="anchored">Study identification</h3>
+
 <div class="form-row">
-<div class="form-group">
-<pre><code>&lt;label for="author"&gt;Author(s) &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
-&lt;input type="text" id="author" name="author" placeholder="e.g. Smith et al. or Jones &amp; Müller" required&gt;</code></pre>
+  <div class="form-group">
+    <label for="author">Author(s) <span class="req">*</span></label>
+    <input type="text" id="author" name="author" placeholder="e.g. Smith et al. or Jones &amp; Müller" required="">
+  </div>
+  <div class="form-group">
+    <label for="year">Year <span class="req">*</span></label>
+    <input type="number" id="year" name="year" min="2000" max="2035" placeholder="2024" required="">
+  </div>
 </div>
-<div class="form-group">
-<pre><code>&lt;label for="year"&gt;Year &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
-&lt;input type="number" id="year" name="year" min="2000" max="2035" placeholder="2024" required&gt;</code></pre>
-</div>
-</div>
+
 <div class="form-row full">
-<div class="form-group">
-<pre><code>&lt;label for="doi_url"&gt;DOI or URL &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
-&lt;input type="text" id="doi_url" name="doi_url" placeholder="https://doi.org/10.XXXX/..." required&gt;</code></pre>
+  <div class="form-group">
+    <label for="doi_url">DOI or URL <span class="req">*</span></label>
+    <input type="text" id="doi_url" name="doi_url" placeholder="https://doi.org/10.XXXX/..." required="">
+  </div>
 </div>
+
 </div>
-</div>
+
 <div class="form-section">
-<h3 class="anchored">
-Behavior &amp; theory
-</h3>
+<h3 class="anchored">Behavior &amp; theory</h3>
+
 <div class="form-row">
-<div class="form-group">
-<pre><code>&lt;label for="behavior"&gt;Behavior studied &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
-&lt;input type="text" id="behavior" name="behavior"
-  placeholder="e.g. Smoking cessation, Physical activity, Snacking" required&gt;</code></pre>
+  <div class="form-group">
+    <label for="behavior">Behavior studied <span class="req">*</span></label>
+    <input type="text" id="behavior" name="behavior" placeholder="e.g. Smoking cessation, Physical activity, Snacking" required="">
+  </div>
+  <div class="form-group">
+    <label for="behavior_category">Behavior category</label>
+    <select id="behavior_category" name="behavior_category">
+      <option value="">— Select —</option>
+      <option>Substance use</option>
+      <option>Dietary behavior</option>
+      <option>Physical activity</option>
+      <option>Medication adherence</option>
+      <option>Sleep</option>
+      <option>Sexual risk behavior</option>
+      <option>Stress / affect regulation</option>
+      <option>Other</option>
+    </select>
+  </div>
 </div>
-<div class="form-group">
-<pre><code>&lt;label for="behavior_category"&gt;Behavior category&lt;/label&gt;
-&lt;select id="behavior_category" name="behavior_category"&gt;
-  &lt;option value=""&gt;— Select —&lt;/option&gt;
-  &lt;option&gt;Substance use&lt;/option&gt;
-  &lt;option&gt;Dietary behavior&lt;/option&gt;
-  &lt;option&gt;Physical activity&lt;/option&gt;
-  &lt;option&gt;Medication adherence&lt;/option&gt;
-  &lt;option&gt;Sleep&lt;/option&gt;
-  &lt;option&gt;Sexual risk behavior&lt;/option&gt;
-  &lt;option&gt;Stress / affect regulation&lt;/option&gt;
-  &lt;option&gt;Other&lt;/option&gt;
-&lt;/select&gt;</code></pre>
-</div>
-</div>
+
 <div class="form-row">
-<div class="form-group">
-<pre><code>&lt;label for="theory_name"&gt;Theory (full name) &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
-&lt;input type="text" id="theory_name" name="theory_name"
-  placeholder="e.g. Temporal Self-Regulation Theory" required&gt;</code></pre>
+  <div class="form-group">
+    <label for="theory_name">Theory (full name) <span class="req">*</span></label>
+    <input type="text" id="theory_name" name="theory_name" placeholder="e.g. Temporal Self-Regulation Theory" required="">
+  </div>
+  <div class="form-group">
+    <label for="theory_group">Theory group <span class="req">*</span></label>
+    <select id="theory_group" name="theory_group" required="">
+      <option value="">— Select —</option>
+      <option>Expectancy-value / Social cognitive</option>
+      <option>Self-regulation / Cybernetic</option>
+      <option>Dual-process / Habit</option>
+      <option>Stage / Volitional</option>
+      <option>Self-determination / Needs-based</option>
+      <option>Addiction / Incentive</option>
+      <option>Multiple / Other</option>
+    </select>
+  </div>
 </div>
-<div class="form-group">
-<pre><code>&lt;label for="theory_group"&gt;Theory group &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
-&lt;select id="theory_group" name="theory_group" required&gt;
-  &lt;option value=""&gt;— Select —&lt;/option&gt;
-  &lt;option&gt;Expectancy-value / Social cognitive&lt;/option&gt;
-  &lt;option&gt;Self-regulation / Cybernetic&lt;/option&gt;
-  &lt;option&gt;Dual-process / Habit&lt;/option&gt;
-  &lt;option&gt;Stage / Volitional&lt;/option&gt;
-  &lt;option&gt;Self-determination / Needs-based&lt;/option&gt;
-  &lt;option&gt;Addiction / Incentive&lt;/option&gt;
-  &lt;option&gt;Multiple / Other&lt;/option&gt;
-&lt;/select&gt;</code></pre>
+
 </div>
-</div>
-</div>
+
 <div class="form-section">
-<h3 class="anchored">
-Computational architecture
-</h3>
+<h3 class="anchored">Computational architecture</h3>
+
 <div class="form-row">
-<div class="form-group">
-<pre><code>&lt;label for="architecture"&gt;Architecture selected &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
-&lt;select id="architecture" name="architecture" required&gt;
-  &lt;option value=""&gt;— Select —&lt;/option&gt;
-  &lt;option&gt;Cybernetic difference equation&lt;/option&gt;
-  &lt;option&gt;Dual-process logistic&lt;/option&gt;
-  &lt;option&gt;Reinforcement learning (RL)&lt;/option&gt;
-  &lt;option&gt;Hidden Markov Model (HMM)&lt;/option&gt;
-  &lt;option&gt;Agent-based model&lt;/option&gt;
-  &lt;option&gt;Network / dynamical systems model&lt;/option&gt;
-  &lt;option&gt;Structural equation model (SEM)&lt;/option&gt;
-  &lt;option&gt;Other&lt;/option&gt;
-&lt;/select&gt;</code></pre>
+  <div class="form-group">
+    <label for="architecture">Architecture selected <span class="req">*</span></label>
+    <select id="architecture" name="architecture" required="">
+      <option value="">— Select —</option>
+      <option>Cybernetic difference equation</option>
+      <option>Dual-process logistic</option>
+      <option>Reinforcement learning (RL)</option>
+      <option>Hidden Markov Model (HMM)</option>
+      <option>Agent-based model</option>
+      <option>Network / dynamical systems model</option>
+      <option>Structural equation model (SEM)</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="mechanism_derived">Was architecture theory-derived?</label>
+    <select id="mechanism_derived" name="mechanism_derived">
+      <option value="">— Select —</option>
+      <option>Yes</option>
+      <option>Partial</option>
+      <option>No</option>
+    </select>
+  </div>
 </div>
-<div class="form-group">
-<pre><code>&lt;label for="mechanism_derived"&gt;Was architecture theory-derived?&lt;/label&gt;
-&lt;select id="mechanism_derived" name="mechanism_derived"&gt;
-  &lt;option value=""&gt;— Select —&lt;/option&gt;
-  &lt;option&gt;Yes&lt;/option&gt;
-  &lt;option&gt;Partial&lt;/option&gt;
-  &lt;option&gt;No&lt;/option&gt;
-&lt;/select&gt;</code></pre>
-</div>
-</div>
+
 <div class="form-row full">
-<div class="form-group">
-<pre><code>&lt;label for="mechanism_rationale"&gt;Rationale for coding (brief)&lt;/label&gt;
-&lt;textarea id="mechanism_rationale" name="mechanism_rationale"
-  placeholder="Why Yes / Partial / No? Cite specific text if possible."&gt;&lt;/textarea&gt;</code></pre>
+  <div class="form-group">
+    <label for="mechanism_rationale">Rationale for coding (brief)</label>
+    <textarea id="mechanism_rationale" name="mechanism_rationale" placeholder="Why Yes / Partial / No? Cite specific text if possible."></textarea>
+  </div>
 </div>
+
 </div>
-</div>
+
 <div class="form-section">
-<h3 class="anchored">
-Cross-architecture validation
-</h3>
+<h3 class="anchored">Cross-architecture validation</h3>
+
 <div class="form-row">
-<div class="form-group">
-<pre><code>&lt;label for="cross_arch_validation"&gt;Cross-architecture comparison performed?&lt;/label&gt;
-&lt;select id="cross_arch_validation" name="cross_arch_validation"&gt;
-  &lt;option value=""&gt;— Select —&lt;/option&gt;
-  &lt;option&gt;Yes&lt;/option&gt;
-  &lt;option&gt;No&lt;/option&gt;
-&lt;/select&gt;</code></pre>
+  <div class="form-group">
+    <label for="cross_arch_validation">Cross-architecture comparison performed?</label>
+    <select id="cross_arch_validation" name="cross_arch_validation">
+      <option value="">— Select —</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="cross_arch_method">Method used (if yes)</label>
+    <select id="cross_arch_method" name="cross_arch_method">
+      <option value="">— Select —</option>
+      <option>LOO-CV (ELPD)</option>
+      <option>Bayes Factor</option>
+      <option>AIC / BIC</option>
+      <option>Cross-validated RMSE</option>
+      <option>Other</option>
+    </select>
+  </div>
 </div>
-<div class="form-group">
-<pre><code>&lt;label for="cross_arch_method"&gt;Method used (if yes)&lt;/label&gt;
-&lt;select id="cross_arch_method" name="cross_arch_method"&gt;
-  &lt;option value=""&gt;— Select —&lt;/option&gt;
-  &lt;option&gt;LOO-CV (ELPD)&lt;/option&gt;
-  &lt;option&gt;Bayes Factor&lt;/option&gt;
-  &lt;option&gt;AIC / BIC&lt;/option&gt;
-  &lt;option&gt;Cross-validated RMSE&lt;/option&gt;
-  &lt;option&gt;Other&lt;/option&gt;
-&lt;/select&gt;</code></pre>
-</div>
-</div>
+
 <div class="form-row">
-<div class="form-group">
-<pre><code>&lt;label for="delta_elpd"&gt;ΔELPD (selected vs. alternative)&lt;/label&gt;
-&lt;input type="number" id="delta_elpd" name="delta_elpd" step="any"
-  placeholder="e.g. −10.8 (negative = selected better)"&gt;
-&lt;span class="form-note"&gt;Leave blank if not applicable or not reported&lt;/span&gt;</code></pre>
+  <div class="form-group">
+    <label for="delta_elpd">ΔELPD (selected vs. alternative)</label>
+    <input type="number" id="delta_elpd" name="delta_elpd" step="any" placeholder="e.g. −10.8 (negative = selected better)">
+    <span class="form-note">Leave blank if not applicable or not reported</span>
+  </div>
 </div>
+
 </div>
-</div>
+
 <div class="form-section">
-<h3 class="anchored">
-JITAI derivation
-</h3>
+<h3 class="anchored">JITAI derivation</h3>
+
 <div class="form-row">
-<div class="form-group">
-<pre><code>&lt;label for="jitai_derived"&gt;JITAI predictions derived from the model?&lt;/label&gt;
-&lt;select id="jitai_derived" name="jitai_derived"&gt;
-  &lt;option value=""&gt;— Select —&lt;/option&gt;
-  &lt;option&gt;Yes&lt;/option&gt;
-  &lt;option&gt;No&lt;/option&gt;
-&lt;/select&gt;</code></pre>
+  <div class="form-group">
+    <label for="jitai_derived">JITAI predictions derived from the model?</label>
+    <select id="jitai_derived" name="jitai_derived">
+      <option value="">— Select —</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
 </div>
-</div>
+
 <div class="form-row">
-<div class="form-group">
-<pre><code>&lt;label for="jitai_who"&gt;JITAI — &lt;em&gt;who?&lt;/em&gt; (targeting dimension)&lt;/label&gt;
-&lt;input type="text" id="jitai_who" name="jitai_who"
-  placeholder="e.g. Person-level mechanism score, CPD profile"&gt;</code></pre>
+  <div class="form-group">
+    <label for="jitai_who">JITAI — <em>who?</em> (targeting dimension)</label>
+    <input type="text" id="jitai_who" name="jitai_who" placeholder="e.g. Person-level mechanism score, CPD profile">
+  </div>
+  <div class="form-group">
+    <label for="jitai_when">JITAI — <em>when?</em> (timing dimension)</label>
+    <input type="text" id="jitai_when" name="jitai_when" placeholder="e.g. High-cue + high-urge windows, Failure windows">
+  </div>
 </div>
-<div class="form-group">
-<pre><code>&lt;label for="jitai_when"&gt;JITAI — &lt;em&gt;when?&lt;/em&gt; (timing dimension)&lt;/label&gt;
-&lt;input type="text" id="jitai_when" name="jitai_when"
-  placeholder="e.g. High-cue + high-urge windows, Failure windows"&gt;</code></pre>
+
 </div>
-</div>
-</div>
+
 <div class="form-section">
-<h3 class="anchored">
-Study characteristics
-</h3>
+<h3 class="anchored">Study characteristics</h3>
+
 <div class="form-row">
-<div class="form-group">
-<pre><code>&lt;label for="study_design"&gt;Study design&lt;/label&gt;
-&lt;select id="study_design" name="study_design"&gt;
-  &lt;option value=""&gt;— Select —&lt;/option&gt;
-  &lt;option&gt;EMA (ecological momentary assessment)&lt;/option&gt;
-  &lt;option&gt;ESM (experience sampling method)&lt;/option&gt;
-  &lt;option&gt;Ambulatory assessment&lt;/option&gt;
-  &lt;option&gt;Lab experiment&lt;/option&gt;
-  &lt;option&gt;RCT&lt;/option&gt;
-  &lt;option&gt;Cross-sectional survey&lt;/option&gt;
-  &lt;option&gt;Other&lt;/option&gt;
-&lt;/select&gt;</code></pre>
+  <div class="form-group">
+    <label for="study_design">Study design</label>
+    <select id="study_design" name="study_design">
+      <option value="">— Select —</option>
+      <option>EMA (ecological momentary assessment)</option>
+      <option>ESM (experience sampling method)</option>
+      <option>Ambulatory assessment</option>
+      <option>Lab experiment</option>
+      <option>RCT</option>
+      <option>Cross-sectional survey</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="outcome_type">Outcome type</label>
+    <select id="outcome_type" name="outcome_type">
+      <option value="">— Select —</option>
+      <option>Binary behavior (event)</option>
+      <option>Continuous behavior</option>
+      <option>Count / frequency</option>
+      <option>Affect / appraisal</option>
+      <option>Multiple outcomes</option>
+      <option>Other</option>
+    </select>
+  </div>
 </div>
-<div class="form-group">
-<pre><code>&lt;label for="outcome_type"&gt;Outcome type&lt;/label&gt;
-&lt;select id="outcome_type" name="outcome_type"&gt;
-  &lt;option value=""&gt;— Select —&lt;/option&gt;
-  &lt;option&gt;Binary behavior (event)&lt;/option&gt;
-  &lt;option&gt;Continuous behavior&lt;/option&gt;
-  &lt;option&gt;Count / frequency&lt;/option&gt;
-  &lt;option&gt;Affect / appraisal&lt;/option&gt;
-  &lt;option&gt;Multiple outcomes&lt;/option&gt;
-  &lt;option&gt;Other&lt;/option&gt;
-&lt;/select&gt;</code></pre>
-</div>
-</div>
+
 <div class="form-row">
-<div class="form-group">
-<pre><code>&lt;label for="n_participants"&gt;N participants&lt;/label&gt;
-&lt;input type="number" id="n_participants" name="n_participants" min="1" placeholder="e.g. 91"&gt;</code></pre>
+  <div class="form-group">
+    <label for="n_participants">N participants</label>
+    <input type="number" id="n_participants" name="n_participants" min="1" placeholder="e.g. 91">
+  </div>
+  <div class="form-group">
+    <label for="study_duration_days">Study duration (days)</label>
+    <input type="number" id="study_duration_days" name="study_duration_days" min="1" placeholder="e.g. 14">
+  </div>
 </div>
-<div class="form-group">
-<pre><code>&lt;label for="study_duration_days"&gt;Study duration (days)&lt;/label&gt;
-&lt;input type="number" id="study_duration_days" name="study_duration_days" min="1" placeholder="e.g. 14"&gt;</code></pre>
-</div>
-</div>
+
 <div class="form-row">
-<div class="form-group">
-<pre><code>&lt;label for="ema_assessments_per_day"&gt;EMA prompts / day&lt;/label&gt;
-&lt;input type="number" id="ema_assessments_per_day" name="ema_assessments_per_day" min="1" step="any" placeholder="e.g. 5"&gt;</code></pre>
+  <div class="form-group">
+    <label for="ema_assessments_per_day">EMA prompts / day</label>
+    <input type="number" id="ema_assessments_per_day" name="ema_assessments_per_day" min="1" step="any" placeholder="e.g. 5">
+  </div>
 </div>
-</div>
+
 <div class="form-row full">
-<div class="form-group">
-<pre><code>&lt;label for="notes"&gt;Additional notes&lt;/label&gt;
-&lt;textarea id="notes" name="notes"
-  placeholder="Anything important not captured above (key findings, data availability, notable limitations, etc.)"&gt;&lt;/textarea&gt;</code></pre>
+  <div class="form-group">
+    <label for="notes">Additional notes</label>
+    <textarea id="notes" name="notes" placeholder="Anything important not captured above (key findings, data availability, notable limitations, etc.)"></textarea>
+  </div>
 </div>
+
 </div>
-</div>
+
 <div class="form-section">
-<h3 class="anchored">
-Your contact (optional)
-</h3>
+<h3 class="anchored">Your contact (optional)</h3>
+
 <div class="form-row">
-<div class="form-group">
-<pre><code>&lt;label for="submitter_email"&gt;Email address&lt;/label&gt;
-&lt;input type="email" id="submitter_email" name="submitter_email"
-  placeholder="For confirmation and follow-up queries"&gt;
-&lt;span class="form-note"&gt;Not published. Used only for review correspondence.&lt;/span&gt;</code></pre>
+  <div class="form-group">
+    <label for="submitter_email">Email address</label>
+    <input type="email" id="submitter_email" name="submitter_email" placeholder="For confirmation and follow-up queries">
+    <span class="form-note">Not published. Used only for review correspondence.</span>
+  </div>
 </div>
+
 </div>
-</div>
+
 <div id="msg-success" class="msg-success">
-<p>✓ <strong>Submission received.</strong> Thank you — your entry will be reviewed and added to the database within a few days. You will receive a confirmation if you provided an email address.</p>
+  ✓ <strong>Submission received.</strong> Thank you — your entry will be reviewed and added to the database within a few days. You will receive a confirmation if you provided an email address.
 </div>
 <div id="msg-error" class="msg-error">
-<p>✗ <strong>Submission failed.</strong> Please try again, or email the data directly to <a href="mailto:christopher.jones@medma.uni-heidelberg.com">christopher.jones@medma.uni-heidelberg.com</a>.</p>
+  ✗ <strong>Submission failed.</strong> Please try again, or email the data directly to
+  <a href="mailto:christopher.jones@medma.uni-heidelberg.com">christopher.jones@medma.uni-heidelberg.com</a>.
 </div>
-<p><br> <button type="submit" class="btn-submit" id="btn-submit">Submit for review</button></p>
+
+<br>
+<button type="submit" class="btn-submit" id="btn-submit">Submit for review</button>
+
 </form>
+
 <script>
 // ── Configuration ─────────────────────────────────────────────────────────────
 // Replace with your deployed Google Apps Script Web App URL:
-const SUBMIT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+const SUBMIT_URL = "https://script.google.com/macros/s/AKfycbxeGrmL0SlNIrRLSv1UqDvfCvcC5gQqDpTvEYHpHKoGAJmRaRwbnFaEsJiTnWwyfQuS/exec";
 
 // Maintainer fallback email:
 const MAINTAINER_EMAIL = "christopher.jones@medma.uni-heidelberg.com";
