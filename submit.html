@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CompModels · Health Behavior</title>
+<title>Submit a Study – CompModels · Health Behavior</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -96,7 +96,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
@@ -104,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Database</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./submit.html"> 
+    <a class="nav-link active" href="./submit.html" aria-current="page"> 
 <span class="menu-text">Submit a Study</span></a>
   </li>  
 </ul>
@@ -127,101 +127,362 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Submit a Study</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="computational-models-in-health-behavior" class="level2 hero">
-<h2 class="anchored" data-anchor-id="computational-models-in-health-behavior">Computational Models in Health Behavior</h2>
-<p>A curated, open evidence synthesis database for formal computational modeling approaches in health psychology — with a focus on <strong>theory-derived architecture selection</strong> and <strong>just-in-time adaptive interventions</strong>.</p>
-</section>
-<section id="what-is-this-database" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-this-database">What is this database?</h3>
-<p>Health behavior research is increasingly using formal computational models — cybernetic control equations, dual-process logistic models, reinforcement learning frameworks, hidden Markov models — to represent behavioral mechanisms. Yet which architecture to use for which behavior is rarely derived from theory in a principled way.</p>
-<p>This database tracks published computational models of momentary health behavior and codes them on <strong>three questions</strong> the field currently cannot answer systematically:</p>
-<ol type="1">
-<li><strong>Was the architecture theory-derived?</strong> (or chosen by convention/software availability)</li>
-<li><strong>Was a cross-architecture comparison conducted?</strong> (a missing standard in current practice)</li>
-<li><strong>Were JITAI predictions derived from the fitted model?</strong> (the application layer)</li>
-</ol>
-</section>
-<section id="how-entries-are-structured" class="level3">
-<h3 class="anchored" data-anchor-id="how-entries-are-structured">How entries are structured</h3>
-<p>Each entry captures one study × behavior combination. The coding scheme maps onto the theory-architecture framework introduced in:</p>
-<blockquote class="blockquote">
-<p>Jones, C. M. (2025). <em>A principled framework for selecting and formalizing computational models of momentary behavior: Two illustrative demonstrations grounded in self-regulation theory.</em> Perspectives on Psychological Science.</p>
-</blockquote>
-<p>Key columns are:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Column</th>
-<th>What it captures</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Theory group</td>
-<td>Which major theory group the authors invoke</td>
-</tr>
-<tr class="even">
-<td>Architecture</td>
-<td>Formal model type selected</td>
-</tr>
-<tr class="odd">
-<td>Mechanism-derived?</td>
-<td>Was selection principled from theory (Yes / Partial / No)</td>
-</tr>
-<tr class="even">
-<td>Cross-arch. validation?</td>
-<td>Was a competing architecture tested?</td>
-</tr>
-<tr class="odd">
-<td>ΔELPD</td>
-<td>LOO-CV advantage of selected model (if reported)</td>
-</tr>
-<tr class="even">
-<td>JITAI derived?</td>
-<td>Were intervention timing/targeting predictions made?</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="how-to-contribute" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-contribute">How to contribute</h3>
-<p>Use the <a href="./submit.html">Submit a Study</a> page to propose an entry. Submissions are reviewed before appearing in the verified database. You can also open a GitHub issue or pull request on the <a href="https://github.com/">repository</a>.</p>
-</section>
-<section id="how-to-cite" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-cite">How to cite</h3>
-<p>If you use data from this database, please cite both the database and the framework paper:</p>
-<blockquote class="blockquote">
-<p>Jones, C. M. (2026). <em>Computational Models in Health Behavior — Evidence Synthesis Database</em> [Data set]. https://[url]</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Jones, C. M. (2025). <em>A principled framework for selecting and formalizing computational models of momentary behavior.</em> Perspectives on Psychological Science.</p>
-</blockquote>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Use this form to propose a new entry for the database. <strong>Mandatory fields are marked with *.</strong> Submissions are held for review before appearing in the verified database — you will receive a confirmation once your entry is processed.</p>
+<div class="callout-note-custom">
+<p><strong>Data quality note:</strong> For the <em>Mechanism-derived?</em> field, please code conservatively. “Yes” means the authors explicitly argued that the architecture formalizes the dominant mechanism as specified by the theory. “Partial” means some justification was given but mechanism dominance was not formally derived. “No” means the architecture was chosen by convention, software, or without theoretical rationale.</p>
+</div>
 <hr>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<form id="submission-form" onsubmit="handleSubmit(event)" novalidate="">
+<div class="form-section">
+<h3 class="anchored">
+Study identification
+</h3>
+<div class="form-row">
+<div class="form-group">
+<pre><code>&lt;label for="author"&gt;Author(s) &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
+&lt;input type="text" id="author" name="author" placeholder="e.g. Smith et al. or Jones &amp; Müller" required&gt;</code></pre>
 </div>
-<div class="callout-title-container flex-fill">
-Note
+<div class="form-group">
+<pre><code>&lt;label for="year"&gt;Year &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
+&lt;input type="number" id="year" name="year" min="2000" max="2035" placeholder="2024" required&gt;</code></pre>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>This database is in active development. Entries marked <strong>verified</strong> have been checked against the primary source. Entries marked <strong>pending</strong> are awaiting review.</p>
+<div class="form-row full">
+<div class="form-group">
+<pre><code>&lt;label for="doi_url"&gt;DOI or URL &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
+&lt;input type="text" id="doi_url" name="doi_url" placeholder="https://doi.org/10.XXXX/..." required&gt;</code></pre>
 </div>
 </div>
+</div>
+<div class="form-section">
+<h3 class="anchored">
+Behavior &amp; theory
+</h3>
+<div class="form-row">
+<div class="form-group">
+<pre><code>&lt;label for="behavior"&gt;Behavior studied &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
+&lt;input type="text" id="behavior" name="behavior"
+  placeholder="e.g. Smoking cessation, Physical activity, Snacking" required&gt;</code></pre>
+</div>
+<div class="form-group">
+<pre><code>&lt;label for="behavior_category"&gt;Behavior category&lt;/label&gt;
+&lt;select id="behavior_category" name="behavior_category"&gt;
+  &lt;option value=""&gt;— Select —&lt;/option&gt;
+  &lt;option&gt;Substance use&lt;/option&gt;
+  &lt;option&gt;Dietary behavior&lt;/option&gt;
+  &lt;option&gt;Physical activity&lt;/option&gt;
+  &lt;option&gt;Medication adherence&lt;/option&gt;
+  &lt;option&gt;Sleep&lt;/option&gt;
+  &lt;option&gt;Sexual risk behavior&lt;/option&gt;
+  &lt;option&gt;Stress / affect regulation&lt;/option&gt;
+  &lt;option&gt;Other&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<pre><code>&lt;label for="theory_name"&gt;Theory (full name) &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
+&lt;input type="text" id="theory_name" name="theory_name"
+  placeholder="e.g. Temporal Self-Regulation Theory" required&gt;</code></pre>
+</div>
+<div class="form-group">
+<pre><code>&lt;label for="theory_group"&gt;Theory group &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
+&lt;select id="theory_group" name="theory_group" required&gt;
+  &lt;option value=""&gt;— Select —&lt;/option&gt;
+  &lt;option&gt;Expectancy-value / Social cognitive&lt;/option&gt;
+  &lt;option&gt;Self-regulation / Cybernetic&lt;/option&gt;
+  &lt;option&gt;Dual-process / Habit&lt;/option&gt;
+  &lt;option&gt;Stage / Volitional&lt;/option&gt;
+  &lt;option&gt;Self-determination / Needs-based&lt;/option&gt;
+  &lt;option&gt;Addiction / Incentive&lt;/option&gt;
+  &lt;option&gt;Multiple / Other&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="form-section">
+<h3 class="anchored">
+Computational architecture
+</h3>
+<div class="form-row">
+<div class="form-group">
+<pre><code>&lt;label for="architecture"&gt;Architecture selected &lt;span class="req"&gt;*&lt;/span&gt;&lt;/label&gt;
+&lt;select id="architecture" name="architecture" required&gt;
+  &lt;option value=""&gt;— Select —&lt;/option&gt;
+  &lt;option&gt;Cybernetic difference equation&lt;/option&gt;
+  &lt;option&gt;Dual-process logistic&lt;/option&gt;
+  &lt;option&gt;Reinforcement learning (RL)&lt;/option&gt;
+  &lt;option&gt;Hidden Markov Model (HMM)&lt;/option&gt;
+  &lt;option&gt;Agent-based model&lt;/option&gt;
+  &lt;option&gt;Network / dynamical systems model&lt;/option&gt;
+  &lt;option&gt;Structural equation model (SEM)&lt;/option&gt;
+  &lt;option&gt;Other&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+</div>
+<div class="form-group">
+<pre><code>&lt;label for="mechanism_derived"&gt;Was architecture theory-derived?&lt;/label&gt;
+&lt;select id="mechanism_derived" name="mechanism_derived"&gt;
+  &lt;option value=""&gt;— Select —&lt;/option&gt;
+  &lt;option&gt;Yes&lt;/option&gt;
+  &lt;option&gt;Partial&lt;/option&gt;
+  &lt;option&gt;No&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+</div>
+</div>
+<div class="form-row full">
+<div class="form-group">
+<pre><code>&lt;label for="mechanism_rationale"&gt;Rationale for coding (brief)&lt;/label&gt;
+&lt;textarea id="mechanism_rationale" name="mechanism_rationale"
+  placeholder="Why Yes / Partial / No? Cite specific text if possible."&gt;&lt;/textarea&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="form-section">
+<h3 class="anchored">
+Cross-architecture validation
+</h3>
+<div class="form-row">
+<div class="form-group">
+<pre><code>&lt;label for="cross_arch_validation"&gt;Cross-architecture comparison performed?&lt;/label&gt;
+&lt;select id="cross_arch_validation" name="cross_arch_validation"&gt;
+  &lt;option value=""&gt;— Select —&lt;/option&gt;
+  &lt;option&gt;Yes&lt;/option&gt;
+  &lt;option&gt;No&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+</div>
+<div class="form-group">
+<pre><code>&lt;label for="cross_arch_method"&gt;Method used (if yes)&lt;/label&gt;
+&lt;select id="cross_arch_method" name="cross_arch_method"&gt;
+  &lt;option value=""&gt;— Select —&lt;/option&gt;
+  &lt;option&gt;LOO-CV (ELPD)&lt;/option&gt;
+  &lt;option&gt;Bayes Factor&lt;/option&gt;
+  &lt;option&gt;AIC / BIC&lt;/option&gt;
+  &lt;option&gt;Cross-validated RMSE&lt;/option&gt;
+  &lt;option&gt;Other&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<pre><code>&lt;label for="delta_elpd"&gt;ΔELPD (selected vs. alternative)&lt;/label&gt;
+&lt;input type="number" id="delta_elpd" name="delta_elpd" step="any"
+  placeholder="e.g. −10.8 (negative = selected better)"&gt;
+&lt;span class="form-note"&gt;Leave blank if not applicable or not reported&lt;/span&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="form-section">
+<h3 class="anchored">
+JITAI derivation
+</h3>
+<div class="form-row">
+<div class="form-group">
+<pre><code>&lt;label for="jitai_derived"&gt;JITAI predictions derived from the model?&lt;/label&gt;
+&lt;select id="jitai_derived" name="jitai_derived"&gt;
+  &lt;option value=""&gt;— Select —&lt;/option&gt;
+  &lt;option&gt;Yes&lt;/option&gt;
+  &lt;option&gt;No&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<pre><code>&lt;label for="jitai_who"&gt;JITAI — &lt;em&gt;who?&lt;/em&gt; (targeting dimension)&lt;/label&gt;
+&lt;input type="text" id="jitai_who" name="jitai_who"
+  placeholder="e.g. Person-level mechanism score, CPD profile"&gt;</code></pre>
+</div>
+<div class="form-group">
+<pre><code>&lt;label for="jitai_when"&gt;JITAI — &lt;em&gt;when?&lt;/em&gt; (timing dimension)&lt;/label&gt;
+&lt;input type="text" id="jitai_when" name="jitai_when"
+  placeholder="e.g. High-cue + high-urge windows, Failure windows"&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="form-section">
+<h3 class="anchored">
+Study characteristics
+</h3>
+<div class="form-row">
+<div class="form-group">
+<pre><code>&lt;label for="study_design"&gt;Study design&lt;/label&gt;
+&lt;select id="study_design" name="study_design"&gt;
+  &lt;option value=""&gt;— Select —&lt;/option&gt;
+  &lt;option&gt;EMA (ecological momentary assessment)&lt;/option&gt;
+  &lt;option&gt;ESM (experience sampling method)&lt;/option&gt;
+  &lt;option&gt;Ambulatory assessment&lt;/option&gt;
+  &lt;option&gt;Lab experiment&lt;/option&gt;
+  &lt;option&gt;RCT&lt;/option&gt;
+  &lt;option&gt;Cross-sectional survey&lt;/option&gt;
+  &lt;option&gt;Other&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+</div>
+<div class="form-group">
+<pre><code>&lt;label for="outcome_type"&gt;Outcome type&lt;/label&gt;
+&lt;select id="outcome_type" name="outcome_type"&gt;
+  &lt;option value=""&gt;— Select —&lt;/option&gt;
+  &lt;option&gt;Binary behavior (event)&lt;/option&gt;
+  &lt;option&gt;Continuous behavior&lt;/option&gt;
+  &lt;option&gt;Count / frequency&lt;/option&gt;
+  &lt;option&gt;Affect / appraisal&lt;/option&gt;
+  &lt;option&gt;Multiple outcomes&lt;/option&gt;
+  &lt;option&gt;Other&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<pre><code>&lt;label for="n_participants"&gt;N participants&lt;/label&gt;
+&lt;input type="number" id="n_participants" name="n_participants" min="1" placeholder="e.g. 91"&gt;</code></pre>
+</div>
+<div class="form-group">
+<pre><code>&lt;label for="study_duration_days"&gt;Study duration (days)&lt;/label&gt;
+&lt;input type="number" id="study_duration_days" name="study_duration_days" min="1" placeholder="e.g. 14"&gt;</code></pre>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<pre><code>&lt;label for="ema_assessments_per_day"&gt;EMA prompts / day&lt;/label&gt;
+&lt;input type="number" id="ema_assessments_per_day" name="ema_assessments_per_day" min="1" step="any" placeholder="e.g. 5"&gt;</code></pre>
+</div>
+</div>
+<div class="form-row full">
+<div class="form-group">
+<pre><code>&lt;label for="notes"&gt;Additional notes&lt;/label&gt;
+&lt;textarea id="notes" name="notes"
+  placeholder="Anything important not captured above (key findings, data availability, notable limitations, etc.)"&gt;&lt;/textarea&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="form-section">
+<h3 class="anchored">
+Your contact (optional)
+</h3>
+<div class="form-row">
+<div class="form-group">
+<pre><code>&lt;label for="submitter_email"&gt;Email address&lt;/label&gt;
+&lt;input type="email" id="submitter_email" name="submitter_email"
+  placeholder="For confirmation and follow-up queries"&gt;
+&lt;span class="form-note"&gt;Not published. Used only for review correspondence.&lt;/span&gt;</code></pre>
+</div>
+</div>
+</div>
+<div id="msg-success" class="msg-success">
+<p>✓ <strong>Submission received.</strong> Thank you — your entry will be reviewed and added to the database within a few days. You will receive a confirmation if you provided an email address.</p>
+</div>
+<div id="msg-error" class="msg-error">
+<p>✗ <strong>Submission failed.</strong> Please try again, or email the data directly to <a href="mailto:christopher.jones@medma.uni-heidelberg.com">christopher.jones@medma.uni-heidelberg.com</a>.</p>
+</div>
+<p><br> <button type="submit" class="btn-submit" id="btn-submit">Submit for review</button></p>
+</form>
+<script>
+// ── Configuration ─────────────────────────────────────────────────────────────
+// Replace with your deployed Google Apps Script Web App URL:
+const SUBMIT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+
+// Maintainer fallback email:
+const MAINTAINER_EMAIL = "christopher.jones@medma.uni-heidelberg.com";
+
+// ── Form handling ─────────────────────────────────────────────────────────────
+function collectFormData() {
+  const ids = [
+    "author", "year", "doi_url", "behavior", "behavior_category",
+    "theory_name", "theory_group", "architecture",
+    "mechanism_derived", "mechanism_rationale",
+    "cross_arch_validation", "cross_arch_method", "delta_elpd",
+    "jitai_derived", "jitai_who", "jitai_when",
+    "study_design", "n_participants", "study_duration_days",
+    "ema_assessments_per_day", "outcome_type", "notes",
+    "submitter_email"
+  ];
+  const data = {};
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    data[id] = el ? el.value.trim() : "";
+  });
+  return data;
+}
+
+function showMsg(id, show) {
+  document.getElementById(id).style.display = show ? "block" : "none";
+}
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById("submission-form");
+
+  // Basic HTML5 validation
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  const btn = document.getElementById("btn-submit");
+  btn.disabled = true;
+  btn.textContent = "Sending…";
+
+  const payload = collectFormData();
+
+  // If no endpoint configured, fall back to mailto
+  if (!SUBMIT_URL || SUBMIT_URL === "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
+    const subject = encodeURIComponent(
+      "[CompModels DB] Submission: " + payload.author + " (" + payload.year + ")"
+    );
+    const body = encodeURIComponent(
+      "New database submission:\n\n" +
+      Object.entries(payload)
+        .filter(([, v]) => v !== "")
+        .map(([k, v]) => k + ": " + v)
+        .join("\n")
+    );
+    window.location.href =
+      "mailto:" + MAINTAINER_EMAIL + "?subject=" + subject + "&body=" + body;
+    showMsg("msg-success", true);
+    btn.textContent = "Submitted";
+    return;
+  }
+
+  // POST to Google Apps Script endpoint
+  try {
+    await fetch(SUBMIT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    showMsg("msg-success", true);
+    showMsg("msg-error", false);
+    form.reset();
+    btn.textContent = "Submitted ✓";
+  } catch (err) {
+    showMsg("msg-error", true);
+    btn.disabled = false;
+    btn.textContent = "Submit for review";
+  }
+}
+</script>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
