@@ -3,13 +3,16 @@ name: Publish to GitHub Pages
 on:
   push:
     branches: [main]
-  workflow_dispatch:   # allow manual re-deploy from the Actions tab
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # needed to push to gh-pages branch
+      contents: write
 
     steps:
       - name: Check out repository
@@ -22,6 +25,5 @@ jobs:
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
-          render: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
