@@ -10,6 +10,7 @@ Use this form to propose a new entry for the database. **Mandatory fields are ma
 
 ---
 
+```{=html}
 <form id="submission-form" onsubmit="handleSubmit(event)" novalidate>
 
 <div class="form-section">
@@ -276,7 +277,7 @@ Use this form to propose a new entry for the database. **Mandatory fields are ma
 <script>
 // ── Configuration ─────────────────────────────────────────────────────────────
 // Replace with your deployed Google Apps Script Web App URL:
-const SUBMIT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+const SUBMIT_URL = "https://script.google.com/macros/s/AKfycbxeGrmL0SlNIrRLSv1UqDvfCvcC5gQqDpTvEYHpHKoGAJmRaRwbnFaEsJiTnWwyfQuS/exec";
 
 // Maintainer fallback email:
 const MAINTAINER_EMAIL = "christopher.jones@medma.uni-heidelberg.com";
@@ -359,3 +360,4 @@ async function handleSubmit(e) {
   }
 }
 </script>
+```
